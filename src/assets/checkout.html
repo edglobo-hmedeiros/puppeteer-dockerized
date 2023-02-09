@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+  <head>
+    <meta charset="UTF-8" />
+    <title>Editora Checkout</title>
+    <link
+      rel="stylesheet"
+      href="https://checkoutshopper-test.adyen.com/checkoutshopper/sdk/5.13.1/adyen.css"
+    />
+    <script src="https://checkoutshopper-test.adyen.com/checkoutshopper/sdk/5.13.1/adyen.js"></script>
+  </head>
+  <body>
+    <main>
+      <form id="frmCustomCard" onSubmit="onSubmit(event)">
+        <label>
+          <span>Card number2:</span>
+          <span id="cardNumberArea" data-cse="encryptedCardNumber"></span>
+        </label>
+        <label>
+          <span>Expiry date:</span>
+          <span id="expiryDateArea" data-cse="encryptedExpiryDate"></span>
+        </label>
+        <label>
+          <span>CVV/CVC:</span>
+          <span id="cvvArea" data-cse="encryptedSecurityCode"></span>
+        </label>
+
+        <button type="submit" id="btnSubmit">Submit</button>
+      </form>
+    </main>
+
+    <script src="/static/checkout.js"></script>
+  </body>
+</html>

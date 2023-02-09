@@ -2,7 +2,6 @@ import puppeteer, { PuppeteerLaunchOptions } from "puppeteer";
 
 const searchGoogleMainResults = async (searchQuery: string) => {
   const browserArgs: PuppeteerLaunchOptions = {
-    executablePath: "/usr/bin/chromium",
     headless: true,
     args: [
       "--no-sandbox",

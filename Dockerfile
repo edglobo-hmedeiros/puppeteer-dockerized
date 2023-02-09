@@ -31,8 +31,6 @@ RUN npm install \
 
 COPY . .
 
-EXPOSE 8000
+EXPOSE 5501
 
-RUN npm run build
-
-CMD ["node", "./dist/index.js"]
+ENTRYPOINT [ "npm", "run", "dev" ]
