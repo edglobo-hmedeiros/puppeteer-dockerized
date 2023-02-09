@@ -1,7 +1,8 @@
-import puppeteer, { BrowserLaunchArgumentOptions } from "puppeteer";
+import puppeteer, { PuppeteerLaunchOptions } from "puppeteer";
 
 const searchGoogleMainResults = async (searchQuery: string) => {
-  const browserArgs: BrowserLaunchArgumentOptions = {
+  const browserArgs: PuppeteerLaunchOptions = {
+    executablePath: "/usr/bin/chromium",
     headless: true,
     args: [
       "--no-sandbox",
@@ -29,7 +30,10 @@ const searchGoogleMainResults = async (searchQuery: string) => {
   await page.waitForSelector(".LC20lb", { visible: true });
 
   const searchResults = await page.$$eval(".LC20lb", (els) =>
-    els.map((e) => ({ titulo: e.innerText, link: e.parentNode.href }))
+    els.map((e) => ({
+      titulo: (e as HTMLElement).innerText,
+      link: (e.parentNode as HTMLElement).getAttribute("href"),
+    }))
   );
 
   await browser.close();

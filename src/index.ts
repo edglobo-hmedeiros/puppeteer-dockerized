@@ -1,12 +1,8 @@
 import express, { Express, Request, Response } from "express";
-import dotenv from "dotenv";
-
 import googleSearch from "./util/searchGoogleMainResults";
 
-dotenv.config();
-
 const app: Express = express();
-const port = process.env.PORT || 3000;
+const port = 8000;
 
 interface GoogleSerachQueryParams {
   searchQuery: string;
@@ -16,6 +12,8 @@ app.get("/", async (req: Request, res: Response) => {
   const { searchQuery } = req.query as unknown as GoogleSerachQueryParams;
 
   if (!searchQuery) res.status(400).json("Parametros incorretos.");
+
+  console.log(searchQuery);
 
   const start = new Date().getTime();
   const results = await googleSearch(searchQuery);
